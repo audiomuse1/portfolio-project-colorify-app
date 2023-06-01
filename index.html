@@ -1,25 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <script src="https://cdn.jsdelivr.net/npm/animejs@3.0.1/lib/anime.min.js"></script>
+ 
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Colorify</title>
   <link rel="stylesheet" href="./index.css">
-  <script src="./index.js" defer></script>
+
+
 </head>
 <body>
+
+  <div class="lightsContainer">
+  </div>
+
   <div class="container">
-    <h1>Colorify</h1>
+    <h1>Portfolio Project - Colorify App</h1>
     <p class="subheading">
       With colorify we want to start
       learning JavaScript.
     </p>
     <div class="circle" id="circleID"></div>
+
+
     <div class="action">
       <button onclick="paint('red')">Red</button>
       <button onclick="paint('green')">Green</button>
       <button onclick="paint('yellow')">Yellow</button>
     </div>
   </div>
+
+
+
+  <div class="demo-wrapper">
+  </div>
+
+  <div class="animation-keyframes-demo"></div>
+
 </body>
+
+<script src="./index.js"></script>
