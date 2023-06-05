@@ -38,7 +38,7 @@
 
   .lightsContainer {
     width: 100%;
-    height:200px;
+    height:auto;
     border: 1px solid black;
     display: flex;
     flex-wrap: wrap;
@@ -53,4 +53,35 @@
     border-right: 30px solid transparent;
     border-top: 50px solid peachpuff;
     border-radius: 50%;
+  }
+
+
+  .controlPanelContainer {
+    width: 50%;
+    margin: auto;
+    height: 300px;
+    background-color: gray;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .colorSection {
+    width: 50%;
+    height: auto;
+    margin: auto;
+    background-color: red;
+  }
+
+  .colorSchemeBtn {
+    width: auto;
+    height: auto;
+    background-color: black;
+    color: white;
+  }
+
+  .motionSection {
+    width: 50%;
+    height: auto;
+    margin: auto;
+    background-color: red;
   }

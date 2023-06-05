@@ -36,11 +36,13 @@ function paint(color) {
   })
 
 
+  //Creating Lights
   var lightBulb;
   function createLights() {
     lightBulb = document.createElement('div');
     lightBulb.className = "lightBulb";
   }
+
 
   function appendLights() {
     var lightsContainer = document.getElementsByClassName("lightsContainer")[0];
@@ -50,8 +52,24 @@ function paint(color) {
       createLights();
       lightsContainer.append(lightBulb);
     }
-    
-
   }
-
   appendLights();
+
+
+  //Creating buttons
+  var colorSection = document.getElementsByClassName("colorSection")[0];
+  var motionSection = document.getElementsByClassName("motionSection")[0];
+
+  function createColorBtns() {
+    colorSchemes = [["Halloween", "orange", "black"], ["Christmas", "red", "green"], ["Valentines", "pink", "red", "white"]];
+    console.log(colorSection);
+    colorSchemes.forEach(item=> {
+      console.log(item[0]);
+
+      var colorSchemeBtn = document.createElement('button');
+      colorSchemeBtn.innerText = item[0];
+      colorSchemeBtn.className = "colorSchemeBtn";
+      colorSection.append(colorSchemeBtn);
+    })
+  }
+  createColorBtns();
