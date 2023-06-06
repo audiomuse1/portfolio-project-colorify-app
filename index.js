@@ -59,7 +59,7 @@ function paint(color) {
 
   function changeLightColors([...colors]) {
     var lightBulbs = Array.from(document.getElementsByClassName("lightBulb"));
-    console.log("lightbulbs", lightBulbs);
+    console.log("colors",colors)
 
     for (let i = 0; i < colors.length; i++) {
       console.log(colors[i])
@@ -82,10 +82,15 @@ function paint(color) {
       colorSchemeBtn.className = "colorSchemeBtn";
 
       colorSchemeBtn.addEventListener('click', function() {
-        console.log(item[0], 'clicked!');
+        var itemInstance;
+        //Use the spread operator to copy the array
+        itemInstance =  [...item];
 
-        changeLightColors(["orange", "black"]);
+        //Removes the theme name and only passes the colors
+        itemInstance.shift();
+        
 
+        changeLightColors(itemInstance);
       });
 
       colorSection.append(colorSchemeBtn);
