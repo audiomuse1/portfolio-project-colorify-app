@@ -61,13 +61,11 @@ function paint(color) {
     var lightBulbs = Array.from(document.getElementsByClassName("lightBulb"));
     console.log("colors",colors)
 
-    for (let i = 0; i < colors.length; i++) {
-      console.log(colors[i])
+    for (var i = 0; i < lightBulbs.length; i++) {
+      lightBulbs[i].style.borderTopColor = colors[i % colors.length];
     }
-    
-    lightBulbs.forEach(lightBulb => {
-      lightBulb.style.backgroundColor = "red";
-    });
+
+   
   }
 
 
