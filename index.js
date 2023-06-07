@@ -1,11 +1,6 @@
 
 
 
-function paint(color) {
-    const circle = document.getElementById('circleID');
-    circle.style = `background-color:${color}`;
-  }
-
 
   var alternateSteps = anime({
     targets:'.demo-wrapper',
@@ -15,8 +10,8 @@ function paint(color) {
     easing: 'steps(5)',
     autoplay: false,
   })
-  document.querySelector('.circle').onclick = alternateSteps.play;
-  document.querySelector('.circle').onclick = alternateSteps.pause;
+  // document.querySelector('.circle').onclick = alternateSteps.play;
+  // document.querySelector('.circle').onclick = alternateSteps.pause;
 
 
 
@@ -70,7 +65,7 @@ function paint(color) {
 
 
   function createColorBtns() {
-    colorSchemes = [["Halloween", "orange", "black"], ["Christmas", "red", "green"], ["Valentines", "pink", "red", "white"]];
+    colorSchemes = [["Halloween", "orange", "black"], ["Christmas", "red", "green"], ["Valentines", "pink", "red"], ["St. Patricks Day", "#099441", "#60A830"]];
     console.log(colorSection);
     colorSchemes.forEach(item=> {
       console.log(item[0]);
@@ -95,3 +90,32 @@ function paint(color) {
     })
   }
   createColorBtns();
+
+
+
+  function createMotionBtns() {
+    colorSchemes = [["Halloween", "orange", "black"], ["Christmas", "red", "green"], ["Valentines", "pink", "red"], ["St. Patricks Day", "#099441", "#60A830"]];
+    console.log(colorSection);
+    colorSchemes.forEach(item=> {
+      console.log(item[0]);
+
+      var colorSchemeBtn = document.createElement('button');
+      colorSchemeBtn.innerText = item[0];
+      colorSchemeBtn.className = "colorSchemeBtn";
+
+      colorSchemeBtn.addEventListener('click', function() {
+        var itemInstance;
+        //Use the spread operator to copy the array
+        itemInstance =  [...item];
+
+        //Removes the theme name and only passes the colors
+        itemInstance.shift();
+        
+
+        changeLightColors(itemInstance);
+      });
+
+      motionSection.append(colorSchemeBtn);
+    })
+  }
+  createMotionBtns();
