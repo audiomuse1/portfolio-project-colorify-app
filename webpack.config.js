@@ -7,6 +7,13 @@ module.exports = {
     filename: 'bundle.js',
     publicPath: '/portfolio-project-colorify-app/',
   },
+
+  devServer: {
+    // ...existing devServer configuration
+
+    publicPath: '/portfolio-project-colorify-app/',
+  },
+  
   mode: 'development',
   module: {
     rules: [
