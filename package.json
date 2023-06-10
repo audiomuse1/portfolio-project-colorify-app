@@ -5,7 +5,8 @@
   "main": "webpack.config.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "webpack serve --config webpack.config.js --open"
+    "start": "webpack serve --config webpack.config.js --open",
+    "build": "webpack --mode production"
   },
   "repository": {
     "type": "git",

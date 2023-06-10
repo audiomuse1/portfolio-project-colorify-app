@@ -5,7 +5,8 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: 'bundle.js',
-    publicPath: '/portfolio-project-colorify-app/',
+    publicPath: process.env.NODE_ENV === 'production' ? '/portfolio-project-colorify-app/' : '/',
+  
   },
 
   devServer: {
