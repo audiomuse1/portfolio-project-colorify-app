@@ -35,10 +35,10 @@
   var lightBulb;
   function createLights() {
     lightBulb = document.createElement('div');
-    lightBulb.className = "lightBulb";
+    lightBulb.className = "container__lightbulb";
   }
 
-  var lightsContainer = document.getElementsByClassName("lightsContainer")[0];
+  var lightsContainer = document.getElementsByClassName("container--lightbulbs")[0];
   function appendLights() {
     for (var i=0; i<100; i++) {
       createLights();
@@ -49,8 +49,8 @@
 
 
   //Creating buttons
-  var colorSection = document.getElementsByClassName("colorSection")[0];
-  var motionSection = document.getElementsByClassName("motionSection")[0];
+  var colorSection = document.getElementsByClassName("container--colors")[0];
+  var motionSection = document.getElementsByClassName(" container--motions")[0];
 
   function changeLightColors([...colors]) {
     var lightBulbs = Array.from(document.getElementsByClassName("lightBulb"));
@@ -72,7 +72,7 @@
 
       var colorSchemeBtn = document.createElement('button');
       colorSchemeBtn.innerText = item[0];
-      colorSchemeBtn.className = "colorSchemeBtn";
+      colorSchemeBtn.className = "button button-color";
 
       colorSchemeBtn.addEventListener('click', function() {
         var itemInstance;
@@ -101,7 +101,7 @@
 
       var colorSchemeBtn = document.createElement('button');
       colorSchemeBtn.innerText = item[0];
-      colorSchemeBtn.className = "colorSchemeBtn";
+      colorSchemeBtn.className = "button button-motion";
 
       colorSchemeBtn.addEventListener('click', function() {
         var itemInstance;

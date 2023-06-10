@@ -1,4 +1,4 @@
-.container {
+.header {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -36,7 +36,7 @@
   }
 
 
-  .lightsContainer {
+  .container {
     width: 100%;
     height:auto;
     border: 1px solid black;
@@ -44,7 +44,7 @@
     flex-wrap: wrap;
   }
 
-  .lightBulb {
+  .container__lightbulb {
     margin: 10px;
     background-color: #ffffff;
     width: 0;
@@ -56,7 +56,7 @@
   }
 
 
-  .controlPanelContainer {
+  .button-section {
     width: 50%;
     margin: auto;
     height: 300px;
@@ -65,23 +65,19 @@
     flex-direction: column;
   }
   
-  .colorSection {
+  .container__buttons {
     width: 50%;
     height: auto;
     margin: auto;
     background-color: red;
   }
 
-  .colorSchemeBtn {
+
+ 
+
+  .button {
     width: auto;
     height: auto;
     background-color: black;
     color: white;
-  }
-
-  .motionSection {
-    width: 50%;
-    height: auto;
-    margin: auto;
-    background-color: red;
   }
