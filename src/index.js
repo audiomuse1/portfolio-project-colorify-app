@@ -16,7 +16,7 @@
   //Appends the lightbulbs dynamically
   function appendLightbulbs() {
     var lightsContainer = document.getElementsByClassName("container--lightbulbs")[0];
-    for (var i=0; i<5; i++) {
+    for (var i=0; i<6; i++) {
       createLightbulbs();
       lightsContainer.append(lightBulb);
     }
@@ -30,15 +30,47 @@
 
 
 
+function changeBackgroundColor(className, element, color) {
+  var buttons = document.getElementsByClassName(className);
+  for (var i = 0; i < buttons.length; i++) {
+    var button = buttons[i];
+    if (button === element) {
+      button.style.backgroundColor = color;
+    } else {
+      button.style.backgroundColor = "black"; // Reset to default
+    }
+  }
+}
+
 //====================================================COLOR SCHEME CHANGES=============================================//
 
   //Adding event listeners for color buttons
   function changeLightColors([...colors]) {
+    var clickedButton = event.target;
+    var isRed = clickedButton.style.backgroundColor === "red";
+  
+    // Check if the clicked button is already red
+    if (isRed) {
+      changeBackgroundColor("button-color", clickedButton, "black");
+      resetLightBulbColors();
+      return; // Exit the function
+    }
+  
+    changeBackgroundColor("button-color", clickedButton, "red");
+  
     var lightBulbs = Array.from(document.getElementsByClassName("container__lightbulb"));
     for (var i = 0; i < lightBulbs.length; i++) {
       lightBulbs[i].style.borderTopColor = colors[i % colors.length];
     }
   }
+  
+  function resetLightBulbColors() {
+    var lightBulbs = document.getElementsByClassName("container__lightbulb");
+    for (var i = 0; i < lightBulbs.length; i++) {
+      lightBulbs[i].style.borderTopColor = "black"; // Reset to default
+    }
+  }
+  
 
   //Creating buttons for control panel
   function createColorBtns(array, onClick) {
@@ -75,7 +107,6 @@
     const button = createColorBtns(scheme, colorChangeEvent);
     colorSection.append(button);
   })
-
 
 
 
@@ -129,33 +160,71 @@
     easing: 'easeOutElastic(1, .8)',
     loop: true
   })
-    // document.querySelector('.animation-keyframes-demo').onclick = circularMotion.play;
+
+  var spiralMotion = anime({
+    targets: '.container__lightbulb',
+    autoplay: false,
+    rotate: '1turn',
+    duration: 3000,
+    easing: 'linear',
+    loop: true
+  });
+
+  var bounceMotion = anime({
+    targets: '.container__lightbulb',
+    autoplay: false,
+    translateY: [
+      { value: -30, duration: 500, easing: 'easeOutCubic' },
+      { value: 0, duration: 800, easing: 'easeInCubic' }
+    ],
+    loop: true
+  });
+  
+
+  var rotateMotion = anime({
+    targets: '.container__lightbulb',
+    autoplay: false,
+    rotate: '1turn',
+    duration: 2000,
+    easing: 'easeInOutSine',
+    loop: true
+  });
 
 
-
-  function changeBackgroundColor(elementId, color) {
-      var buttons = document.getElementsByClassName("button-motion");
-      for (var i = 0; i < buttons.length; i++) {
-        var button = buttons[i];
-        if (button === elementId) {
-          button.style.backgroundColor = color;
-        } else {
-          button.style.backgroundColor = "black"; // Reset to default
-        }
-      }
-  }
-
+  var currentMotion = null;
 
  //Adding event listeners for motion buttons
  function changeLightMotions(motion) {
+  var clickedButton = event.target;
+  var isRed = clickedButton.style.backgroundColor === "red";
 
-  changeBackgroundColor(event.target, "red")
+  // Check if the clicked button is already red
+  if (isRed) {
+    changeBackgroundColor("button-motion", clickedButton, "black");
+    stopMotion(currentMotion);
+    currentMotion = null;
+    return; // Exit the function
+  }
+
+  changeBackgroundColor("button-motion", clickedButton, "red");
+
+  if (currentMotion) {
+    stopMotion(currentMotion);
+  }
 
   motion.play();
+  currentMotion = motion;
+
   var lightBulbs = Array.from(document.getElementsByClassName("container__lightbulb"));
   for (var i = 0; i < lightBulbs.length; i++) {
     lightBulbs[i].style.borderTopColor = "red";
   }
+}
+
+
+function stopMotion(motion) {
+  motion.pause();
+  motion.seek(0);
 }
 
 
@@ -172,7 +241,8 @@
 
 
   
-  var motions = [["Circular Motion", circularMotion], ["Square Motion", squareMotion]]
+  var motions = [["Circular Motion", circularMotion], ["Square Motion", squareMotion], ["Spiral Motion", spiralMotion], ["Bounce Motion", bounceMotion], [
+    "Rotate Motion", rotateMotion]]
   motions.forEach(scheme => {
     var motionSection = document.getElementsByClassName("container--motions")[0];
     const button = createMotionBtns(scheme, changeLightMotions);
