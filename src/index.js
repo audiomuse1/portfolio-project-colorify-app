@@ -30,6 +30,8 @@
 
 
 
+//====================================================COLOR SCHEME CHANGES=============================================//
+
   //Adding event listeners for color buttons
   function changeLightColors([...colors]) {
     var lightBulbs = Array.from(document.getElementsByClassName("container__lightbulb"));
@@ -78,6 +80,8 @@
 
 
 
+  //====================================================MOTION CHANGES=============================================//
+
 
   var alternateSteps = anime({
     targets:'.demo-wrapper',
@@ -91,6 +95,9 @@
   // document.querySelector('.circle').onclick = alternateSteps.pause;
 
 
+
+
+  //Circular Motion
 
  var circularMotion = anime({
     targets: '.container__lightbulb',
@@ -107,6 +114,7 @@
     loop: true
   })
 
+  //Square Motion
   var squareMotion = anime({
     targets: '.container__lightbulb',
     autoplay: false,
@@ -125,9 +133,25 @@
 
 
 
+  function changeBackgroundColor(elementId, color) {
+      var buttons = document.getElementsByClassName("button-motion");
+      for (var i = 0; i < buttons.length; i++) {
+        var button = buttons[i];
+        if (button === elementId) {
+          button.style.backgroundColor = color;
+        } else {
+          button.style.backgroundColor = "black"; // Reset to default
+        }
+      }
+  }
+
+
  //Adding event listeners for motion buttons
- function changeLightMotions(scheme) {
-  scheme.play();
+ function changeLightMotions(motion) {
+
+  changeBackgroundColor(event.target, "red")
+
+  motion.play();
   var lightBulbs = Array.from(document.getElementsByClassName("container__lightbulb"));
   for (var i = 0; i < lightBulbs.length; i++) {
     lightBulbs[i].style.borderTopColor = "red";
