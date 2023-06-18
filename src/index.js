@@ -15,10 +15,16 @@
 
   //Appends the lightbulbs dynamically
   function appendLightbulbs() {
-    var lightsContainer = document.getElementsByClassName("container--lightbulbs")[0];
+    var lightsContainerTop = document.getElementsByClassName("container--lightbulbs")[0];
+    var lightsContainerBottom = document.getElementsByClassName("container--lightbulbs")[1];
     for (var i=0; i<6; i++) {
       createLightbulbs();
-      lightsContainer.append(lightBulb);
+      lightsContainerTop.append(lightBulb);
+    }
+
+    for (var i=0; i<6; i++) {
+      createLightbulbs();
+      lightsContainerBottom.append(lightBulb);
     }
   }
   appendLightbulbs();
@@ -190,6 +196,25 @@ function changeBackgroundColor(className, element, color) {
     loop: true
   });
 
+  var blinkMotion = anime({
+    targets: '.container__lightbulb',
+    autoplay: false,
+    opacity: [1, 0],
+    duration: 500,
+    easing: 'linear',
+    direction: 'alternate',
+    loop: true
+  });
+
+  var shakeMotion = anime({
+    targets: '.container__lightbulb',
+    autoplay: false,
+    translateX: ['-5px', '5px', '-5px'],
+    duration: 300,
+    easing: 'easeInOutSine',
+    direction: 'alternate',
+    loop: true
+  });
 
   var currentMotion = null;
 
@@ -214,11 +239,6 @@ function changeBackgroundColor(className, element, color) {
 
   motion.play();
   currentMotion = motion;
-
-  var lightBulbs = Array.from(document.getElementsByClassName("container__lightbulb"));
-  for (var i = 0; i < lightBulbs.length; i++) {
-    lightBulbs[i].style.borderTopColor = "red";
-  }
 }
 
 
@@ -242,7 +262,7 @@ function stopMotion(motion) {
 
   
   var motions = [["Circular Motion", circularMotion], ["Square Motion", squareMotion], ["Spiral Motion", spiralMotion], ["Bounce Motion", bounceMotion], [
-    "Rotate Motion", rotateMotion]]
+    "Rotate Motion", rotateMotion], ["Blink Motion", blinkMotion], ["Shake Motion", shakeMotion]]
   motions.forEach(scheme => {
     var motionSection = document.getElementsByClassName("container--motions")[0];
     const button = createMotionBtns(scheme, changeLightMotions);

@@ -47,6 +47,21 @@
     justify-content: space-around;
   }
 
+
+
+  .container--middle {
+    width: 100%;
+    height: auto;
+    background-color: yellow;
+    display: flex;
+    flex-direction: row;
+  }
+
+  .container__sidebar {
+    width: 25%;
+    background-color: red;
+  }
+
   .container__lightbulb {
     margin: 10px;
     background-color: #ffffff;
@@ -61,7 +76,6 @@
 
   .button-section {
     width: 50%;
-    margin: auto;
     height: 300px;
     background-color: gray;
     display: flex;
