@@ -17,6 +17,9 @@
   function appendLightbulbs() {
     var lightsContainerTop = document.getElementsByClassName("container--lightbulbs")[0];
     var lightsContainerBottom = document.getElementsByClassName("container--lightbulbs")[1];
+    var lightSidebarLeft = document.getElementsByClassName("container__sidebar")[0];
+    var lightSidebarRight = document.getElementsByClassName("container__sidebar")[1];
+
     for (var i=0; i<6; i++) {
       createLightbulbs();
       lightsContainerTop.append(lightBulb);
@@ -25,6 +28,16 @@
     for (var i=0; i<6; i++) {
       createLightbulbs();
       lightsContainerBottom.append(lightBulb);
+    }
+
+    for (var i=0; i<4; i++) {
+      createLightbulbs();
+      lightSidebarLeft.append(lightBulb);
+    }
+
+    for (var i=0; i<4; i++) {
+      createLightbulbs();
+      lightSidebarRight.append(lightBulb);
     }
   }
   appendLightbulbs();

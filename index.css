@@ -52,14 +52,16 @@
   .container--middle {
     width: 100%;
     height: auto;
-    background-color: yellow;
     display: flex;
     flex-direction: row;
   }
 
   .container__sidebar {
-    width: 25%;
-    background-color: red;
+    width: 15%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
   }
 
   .container__lightbulb {
@@ -75,8 +77,8 @@
 
 
   .button-section {
-    width: 50%;
-    height: 300px;
+    width: 70%;
+    height: 40vh;
     background-color: gray;
     display: flex;
     flex-direction: column;
