@@ -5,6 +5,9 @@
 //===================================================LIGHTBULB SECTION================================================//
 //====================================================================================================================//
 
+
+
+
 //Creating lightbulbs
   var lightBulb;
   function createLightbulbs() {
@@ -30,17 +33,66 @@
       lightsContainerBottom.append(lightBulb);
     }
 
-    for (var i=0; i<4; i++) {
+    for (var i=0; i<3; i++) {
       createLightbulbs();
       lightSidebarLeft.append(lightBulb);
     }
 
-    for (var i=0; i<4; i++) {
+    for (var i=0; i<3; i++) {
       createLightbulbs();
       lightSidebarRight.append(lightBulb);
     }
   }
   appendLightbulbs();
+
+
+  function alignSidebar() {
+
+  var topRow = document.querySelectorAll('.container--lightbulbs')[0];
+  var topRowLeftBulb = topRow.querySelectorAll('.container__lightbulb')[0];
+  var topRowRightBulb = topRow.querySelectorAll('.container__lightbulb')[5];
+
+
+  var leftSidebar = document.querySelector('.container__sidebar--left');
+  var leftSidebarLightbulbs = leftSidebar.querySelectorAll('.container__lightbulb');
+
+ 
+  
+
+  if (topRowLeftBulb && leftSidebarLightbulbs.length > 0) {
+    console.log("hi");
+    var firstLightbulbRect = topRowLeftBulb.getBoundingClientRect();
+    var lastLightbulbRect = topRowRightBulb.getBoundingClientRect();
+    var sidebarRect = leftSidebar.getBoundingClientRect();
+
+    var offsetX = firstLightbulbRect.left - sidebarRect.left;
+
+    console.log(offsetX )
+
+    leftSidebarLightbulbs.forEach(function(lightbulb) {
+      lightbulb.style.marginLeft = offsetX + 'px'
+    });
+  }
+
+
+  var rightSidebar = document.querySelector('.container__sidebar--right');
+  var rightSidebarLightbulbs = rightSidebar.querySelectorAll('.container__lightbulb');
+
+  if (topRowRightBulb && rightSidebarLightbulbs.length > 0) {
+    console.log("yoi");
+    var lastLightbulbRect = topRowRightBulb.getBoundingClientRect();
+    var sidebarRect = rightSidebar.getBoundingClientRect();
+
+    var offsetXLast = lastLightbulbRect.left - sidebarRect.left;
+    console.log("yo",offsetXLast)
+
+    rightSidebarLightbulbs.forEach(function(lightbulb) {
+      lightbulb.style.marginLeft = offsetXLast + 'px'
+    });
+  }
+}
+
+alignSidebar();
 
 
 
@@ -150,19 +202,25 @@ function changeBackgroundColor(className, element, color) {
   //Circular Motion
 
  var circularMotion = anime({
+
     targets: '.container__lightbulb',
     autoplay: false,
-    keyframes: [
-      {translateY: -40},
-      {translateX: 50},
-      {translateY: 40},
-      {translateX: 0},
-      {translateY: 0}
-    ],
-    duration: 4000,
+    duration: 20000,
     easing: 'easeOutElastic(1, .8)',
-    loop: true
-  })
+    loop: true,
+    update: function(animation) {
+      var progress = animation.progress * 0.2; // Adjust the factor as needed for desired speed
+      var angle = progress * 2 * Math.PI; // Convert progress to radians
+      var radius = 20; // Adjust the radius as needed
+  
+      var translateX = Math.cos(angle) * radius;
+      var translateY = Math.sin(angle) * radius;
+  
+      animation.animatables.forEach(function(animatable) {
+        animatable.target.style.transform = 'translate(' + translateX + 'px, ' + translateY + 'px)';
+      });
+    }
+  });
 
   //Square Motion
   var squareMotion = anime({
@@ -281,3 +339,5 @@ function stopMotion(motion) {
     const button = createMotionBtns(scheme, changeLightMotions);
     motionSection.append(button);
   })
+
+
