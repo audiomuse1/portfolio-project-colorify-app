@@ -47,53 +47,51 @@
 
 
   function alignSidebar() {
-
-  var topRow = document.querySelectorAll('.container--lightbulbs')[0];
-  var topRowLeftBulb = topRow.querySelectorAll('.container__lightbulb')[0];
-  var topRowRightBulb = topRow.querySelectorAll('.container__lightbulb')[5];
-
-
-  var leftSidebar = document.querySelector('.container__sidebar--left');
-  var leftSidebarLightbulbs = leftSidebar.querySelectorAll('.container__lightbulb');
-
- 
+    var topRow = document.querySelectorAll('.container--lightbulbs')[0];
+    var topRowLeftBulb = topRow.querySelectorAll('.container__lightbulb')[0];
+    var topRowRightBulb = topRow.querySelectorAll('.container__lightbulb')[5];
   
-
-  if (topRowLeftBulb && leftSidebarLightbulbs.length > 0) {
-    console.log("hi");
-    var firstLightbulbRect = topRowLeftBulb.getBoundingClientRect();
-    var lastLightbulbRect = topRowRightBulb.getBoundingClientRect();
-    var sidebarRect = leftSidebar.getBoundingClientRect();
-
-    var offsetX = firstLightbulbRect.left - sidebarRect.left;
-
-    console.log(offsetX )
-
-    leftSidebarLightbulbs.forEach(function(lightbulb) {
-      lightbulb.style.marginLeft = offsetX + 'px'
+    var leftSidebar = document.querySelector('.container__sidebar--left');
+    var leftSidebarLightbulbs = leftSidebar.querySelectorAll('.container__lightbulb');
+  
+    if (topRowLeftBulb && leftSidebarLightbulbs.length > 0) {
+      var firstLightbulbRect = topRowLeftBulb.getBoundingClientRect();
+      var sidebarRect = leftSidebar.getBoundingClientRect();
+  
+      var offsetX = firstLightbulbRect.left - sidebarRect.left;
+  
+      leftSidebarLightbulbs.forEach(function(lightbulb) {
+        lightbulb.style.marginLeft = offsetX + 'px';
+      });
+    }
+  
+    var rightSidebar = document.querySelector('.container__sidebar--right');
+    var rightSidebarLightbulbs = rightSidebar.querySelectorAll('.container__lightbulb');
+  
+    if (topRowRightBulb && rightSidebarLightbulbs.length > 0) {
+      var lastLightbulbRect = topRowRightBulb.getBoundingClientRect();
+      var sidebarRect = rightSidebar.getBoundingClientRect();
+  
+      var offsetXLast = lastLightbulbRect.left - sidebarRect.left;
+  
+      rightSidebarLightbulbs.forEach(function(lightbulb) {
+        lightbulb.style.marginLeft = offsetXLast + 'px';
+      });
+    }
+  }
+  
+  function addResizeListener(callback) {
+    let timeoutId;
+  
+    window.addEventListener("resize", () => {
+      clearTimeout(timeoutId);
+      timeoutId = setTimeout(callback, 200); // Delay the callback execution to handle resize end
     });
   }
-
-
-  var rightSidebar = document.querySelector('.container__sidebar--right');
-  var rightSidebarLightbulbs = rightSidebar.querySelectorAll('.container__lightbulb');
-
-  if (topRowRightBulb && rightSidebarLightbulbs.length > 0) {
-    console.log("yoi");
-    var lastLightbulbRect = topRowRightBulb.getBoundingClientRect();
-    var sidebarRect = rightSidebar.getBoundingClientRect();
-
-    var offsetXLast = lastLightbulbRect.left - sidebarRect.left;
-    console.log("yo",offsetXLast)
-
-    rightSidebarLightbulbs.forEach(function(lightbulb) {
-      lightbulb.style.marginLeft = offsetXLast + 'px'
-    });
-  }
-}
-
-alignSidebar();
-
+  
+  addResizeListener(alignSidebar);
+  alignSidebar(); // Initial alignment
+  
 
 
 //==============================================CONTROL PANEL BTNS SECTION=============================================//
