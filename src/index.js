@@ -106,7 +106,7 @@ function changeBackgroundColor(className, element, color) {
     if (button === element) {
       button.style.backgroundColor = color;
     } else {
-      button.style.backgroundColor = "black"; // Reset to default
+      button.style.backgroundColor = "#84A7A1"; // Reset to default
     }
   }
 }
@@ -116,16 +116,16 @@ function changeBackgroundColor(className, element, color) {
   //Adding event listeners for color buttons
   function changeLightColors([...colors]) {
     var clickedButton = event.target;
-    var isRed = clickedButton.style.backgroundColor === "red";
+    var isRed = clickedButton.style.backgroundColor === "blue";
   
     // Check if the clicked button is already red
     if (isRed) {
-      changeBackgroundColor("button-color", clickedButton, "black");
+      changeBackgroundColor("button-color", clickedButton, "#84A7A1");
       resetLightBulbColors();
       return; // Exit the function
     }
   
-    changeBackgroundColor("button-color", clickedButton, "red");
+    changeBackgroundColor("button-color", clickedButton, "blue");
   
     var lightBulbs = Array.from(document.getElementsByClassName("container__lightbulb"));
     for (var i = 0; i < lightBulbs.length; i++) {
@@ -136,14 +136,14 @@ function changeBackgroundColor(className, element, color) {
   function resetLightBulbColors() {
     var lightBulbs = document.getElementsByClassName("container__lightbulb");
     for (var i = 0; i < lightBulbs.length; i++) {
-      lightBulbs[i].style.borderTopColor = "black"; // Reset to default
+      lightBulbs[i].style.borderTopColor = "#1F6E8C"; // Reset to default
     }
   }
   
 
   //Creating buttons for control panel
   function createColorBtns(array, onClick) {
-    const button = document.createElement('button');
+    const button = document.createElement('button');  
     button.innerText = array[0];
     button.className = "button button-color";
     button.value = array;
@@ -290,17 +290,17 @@ function changeBackgroundColor(className, element, color) {
  //Adding event listeners for motion buttons
  function changeLightMotions(motion) {
   var clickedButton = event.target;
-  var isRed = clickedButton.style.backgroundColor === "red";
+  var isRed = clickedButton.style.backgroundColor === "blue";
 
   // Check if the clicked button is already red
   if (isRed) {
-    changeBackgroundColor("button-motion", clickedButton, "black");
+    changeBackgroundColor("button-motion", clickedButton, "#84A7A1");
     stopMotion(currentMotion);
     currentMotion = null;
     return; // Exit the function
   }
 
-  changeBackgroundColor("button-motion", clickedButton, "red");
+  changeBackgroundColor("button-motion", clickedButton, "blue");
 
   if (currentMotion) {
     stopMotion(currentMotion);

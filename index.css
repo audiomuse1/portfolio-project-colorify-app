@@ -1,12 +1,14 @@
 
 body {
   margin: 0px;
+  background-color: #0E2954;
 }
 .header {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    color: #ffffff;
   }
   
   .circle {
@@ -24,20 +26,6 @@ body {
     cursor: pointer;
   }
   
-
-  .demo-wrapper {
-    background-color: red;
-    width: 30px;
-    height: 30px;
-  }
-
-  .animation-keyframes-demo {
-    width: 30px;
-    height: 30px;
-    border-radius: 30px;
-    background-color: black;
-    margin-top: 4rem;
-  }
 
 
   .container {
@@ -71,12 +59,12 @@ body {
 
   .container__lightbulb {
     margin: 10px;
-    background-color: #ffffff;
+    background-color: #0E2954;
     width: 0;
     height: 0;
     border-left: 30px solid transparent;
     border-right: 30px solid transparent;
-    border-top: 50px solid peachpuff;
+    border-top: 50px solid #1F6E8C;
     border-radius: 50%;
   }
 
@@ -84,7 +72,7 @@ body {
   .button-section {
     width: 70%;
     height: 40vh;
-    background-color: peachpuff;
+    background-color: #1F6E8C;
     box-shadow: 7px 7px 7px black;
     border-radius: 20px;
     display: flex;
@@ -95,25 +83,60 @@ body {
     width: 50%;
     height: auto;
     margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.3%;
+    justify-content: flex-start; 
+
+    @media screen and (max-width: 800px) {
+      width: 70%;
+    }
+  }
+
+
+  .container__buttons-text {
+    font-weight: bold;
+    height: 40px;
+    padding: 0px;
+    top: 0px;
+    text-align: center;
+    margin: 0px;
+    line-height: 40px;
+    width: auto;
+    font-size: 18px;
+    padding-left: 10px;
+    padding-right: 10px;
   }
 
   .container--colors {
-    background-color: yellowgreen;
+    background-color: #2E8A99;
     border-radius: 10px;
     padding: 10px;
-    box-shadow: 7px 7px 7px black;
+    box-shadow: 3px 3px 3px #0E2954;
   }
-
+  
   .container--motions {
-    background-color: gray;
+    background-color: #2E8A99;
     border-radius: 10px;
     padding: 10px;
-    box-shadow: 7px 7px 7px black;
+    box-shadow: 3px 3px 3px #0E2954;
   }
 
   .button {
     width: auto;
-    height: auto;
-    background-color: black;
-    color: white;
+    height: 40px;
+    background-color: #84A7A1;
+    color: #000000;
+    font-weight: bold;
+    border: none;
+    width: auto;
+    box-shadow:2px 2px 2px black;
+  }
+  
+
+
+  .container__buttons > * {
+    margin-bottom: 10px; /* Add margin at the bottom of each flex item */
+    margin-top: 10px; 
+    
   }

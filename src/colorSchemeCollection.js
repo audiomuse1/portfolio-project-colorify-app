@@ -23,7 +23,9 @@ export default class ColorSchemeCollection {
   // Create an instance of the ColorSchemeCollection class
   const colorSchemesCollection = new ColorSchemeCollection();
   
-  // Accessing the color schemes
+  // Accessing the e
+  
+  s
   console.log(colorSchemesCollection.getColorSchemes()); // Entire color schemes array
   console.log(colorSchemesCollection.getColorScheme(0)); // ["Halloween", "orange", "black"]
   console.log(colorSchemesCollection.getColorScheme(1)); // ["Christmas", "red", "green"]
